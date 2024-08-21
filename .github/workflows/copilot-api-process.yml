@@ -20,20 +20,20 @@ jobs:
         uses: ambilykk/copilot-metrics-retention@main
         with:        
           GITHUB_TOKEN: ${{ secrets.ORG_TOKEN }}
-          org_name: ${{ vars.org_name }} 
-          json_path: app/copilot-dashboard/src/assets/copilot_metrics_${{ vars.org_name }}.json
+          org_name: ${{ vars.ORG_NAME}} 
+          json_path: app/copilot-dashboard/src/assets/copilot_metrics_${{ vars.ORG_NAME }}.json
       
       - name: Copilot usage
         uses: ambilykk/copilot-usage-report@main
         with:        
           GITHUB_TOKEN: ${{secrets.ORG_TOKEN}}
-          org_name: ${{ vars.org_name }} 
-          file_path: app/copilot-dashboard/src/assets/copilot_seats_${{ vars.org_name }}.json
+          org_name: ${{ vars.ORG_NAME }} 
+          file_path: app/copilot-dashboard/src/assets/copilot_seats_${{ vars.ORG_NAME }}.json
     
       - name: Write file names to a text file
         run: |
-            echo 'copilot_metrics_${{ vars.org_name }}.json' > ./app/copilot-dashboard/src/assets/data.txt
-            echo 'copilot_seats_${{ vars.org_name }}.json' >> ./app/copilot-dashboard/src/assets/data.txt
+            echo 'copilot_metrics_${{ vars.ORG_NAME }}.json' > ./app/copilot-dashboard/src/assets/data.txt
+            echo 'copilot_seats_${{ vars.ORG_NAME }}.json' >> ./app/copilot-dashboard/src/assets/data.txt
             
 
       - name: Commit and push if it changed
